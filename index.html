@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="theme-color" content="#101a2c">
   <title>MY IPTV SERVER — لوحة التحكم</title>
-  <link rel="stylesheet" href="assets/style.css">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="app-shell">
@@ -26,7 +26,7 @@
         <div><b>وضع تجريبي</b><small>تخزين محلي في هذا المتصفح</small></div>
       </div>
     </aside>
-
+ 
     <main class="main">
       <header class="topbar">
         <div>
@@ -38,7 +38,7 @@
           <button class="btn btn-primary" id="import-top">＋ استيراد M3U</button>
         </div>
       </header>
-
+ 
       <section class="view active" id="view-dashboard">
         <div class="welcome">
           <div>
@@ -63,7 +63,7 @@
         </div>
         <div class="notice"><b>معلومة تقنية:</b> هذه نسخة لوحة تحكم ثابتة تعمل على GitHub Pages. لا تنشئ وحدها خادم Xtream Codes أو روابط دخول للمستعملين. سنضيف خدمة API خلفية منفصلة بعد اختبار توافق جهاز Geant.</div>
       </section>
-
+ 
       <section class="view" id="view-channels">
         <div class="panel">
           <div class="toolbar">
@@ -82,7 +82,7 @@
           </div>
         </div>
       </section>
-
+ 
       <section class="view" id="view-movies">
         <div class="panel placeholder-panel"><span>🎬</span><h2>قسم الأفلام</h2><p>هذه مساحة تجهيز لقسم VOD. سنربطه لاحقاً بمصدر أفلام تملك حق استخدامه، مع بيانات العنوان والصورة والتصنيف ورابط التشغيل.</p></div>
       </section>
@@ -101,7 +101,7 @@
       <footer>MY IPTV SERVER <span>نسخة أولية · للاستخدام مع المحتوى الذي تملك حق توزيعه</span></footer>
     </main>
   </div>
-
+ 
   <input type="file" id="m3u-file" accept=".m3u,.m3u8,.txt,audio/x-mpegurl,application/vnd.apple.mpegurl" hidden>
   <div class="modal-backdrop" id="modal">
     <form class="modal" id="channel-form">
@@ -114,6 +114,6 @@
     </form>
   </div>
   <div class="toast" id="toast" role="status"></div>
-  <script src="assets/app.js"></script>
+  <script src="app.js"></script>
 </body>
 </html>
