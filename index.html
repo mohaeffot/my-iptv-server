@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#101a2c">
+  <title>MY IPTV SERVER — لوحة التحكم</title>
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">M</div>
+        <div><strong>MY IPTV</strong><small>SERVER CONTROL</small></div>
+      </div>
+      <nav>
+        <button class="nav-link active" data-view="dashboard"><span>▦</span> الرئيسية</button>
+        <button class="nav-link" data-view="channels"><span>▣</span> القنوات المباشرة</button>
+        <button class="nav-link" data-view="movies"><span>▶</span> الأفلام</button>
+        <button class="nav-link" data-view="series"><span>▤</span> المسلسلات</button>
+        <button class="nav-link" data-view="settings"><span>⚙</span> الإعدادات</button>
+      </nav>
+      <div class="sidebar-note">
+        <span class="status-dot"></span>
+        <div><b>وضع تجريبي</b><small>تخزين محلي في هذا المتصفح</small></div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">لوحة إدارة المحتوى</p>
+          <h1 id="page-title">الرئيسية</h1>
+        </div>
+        <div class="top-actions">
+          <span class="demo-pill">DEMO</span>
+          <button class="btn btn-primary" id="import-top">＋ استيراد M3U</button>
+        </div>
+      </header>
+
+      <section class="view active" id="view-dashboard">
+        <div class="welcome">
+          <div>
+            <p class="eyebrow light">مرحباً بك في لوحة التحكم</p>
+            <h2>أدر محتوى IPTV من مكان واحد</h2>
+            <p>استورد قائمة M3U، نظّم القنوات، ثم صدّر القائمة بعد التعديل.</p>
+          </div>
+          <div class="welcome-icon">📡</div>
+        </div>
+        <div class="stats">
+          <article class="stat-card"><span class="stat-icon blue">▣</span><small>إجمالي القنوات</small><strong id="stat-channels">0</strong><em>قناة</em></article>
+          <article class="stat-card"><span class="stat-icon purple">▦</span><small>التصنيفات</small><strong id="stat-categories">0</strong><em>تصنيف</em></article>
+          <article class="stat-card"><span class="stat-icon green">⇧</span><small>آخر استيراد</small><strong id="stat-import">—</strong><em>الحالة</em></article>
+        </div>
+        <div class="panel">
+          <div class="panel-heading"><div><h3>ابدأ العمل</h3><p>اختر الخطوة التي تريد تنفيذها</p></div></div>
+          <div class="quick-grid">
+            <button class="quick-card" id="quick-import"><span>📥</span><b>استيراد قائمة M3U</b><small>تحميل قائمة القنوات من جهازك</small></button>
+            <button class="quick-card" id="quick-channels"><span>📺</span><b>إدارة القنوات</b><small>بحث، تعديل، حذف وتنظيم</small></button>
+            <button class="quick-card" id="quick-export"><span>📤</span><b>تصدير قائمة M3U</b><small>حفظ نسخة من القائمة المعدّلة</small></button>
+          </div>
+        </div>
+        <div class="notice"><b>معلومة تقنية:</b> هذه نسخة لوحة تحكم ثابتة تعمل على GitHub Pages. لا تنشئ وحدها خادم Xtream Codes أو روابط دخول للمستعملين. سنضيف خدمة API خلفية منفصلة بعد اختبار توافق جهاز Geant.</div>
+      </section>
+
+      <section class="view" id="view-channels">
+        <div class="panel">
+          <div class="toolbar">
+            <div class="search-wrap"><span>⌕</span><input id="search" type="search" placeholder="ابحث عن قناة أو تصنيف..."></div>
+            <select id="category-filter"><option value="">كل التصنيفات</option></select>
+            <button class="btn btn-primary" id="add-channel">＋ إضافة قناة</button>
+            <button class="btn btn-outline" id="import-channels">استيراد M3U</button>
+            <button class="btn btn-outline" id="export-channels">تصدير M3U</button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>القناة</th><th>التصنيف</th><th>رابط البث</th><th>الإجراءات</th></tr></thead>
+              <tbody id="channel-rows"></tbody>
+            </table>
+            <div class="empty-state" id="empty-state"><span>📡</span><b>لا توجد قنوات بعد</b><p>استورد ملف M3U أو أضف قناة يدوياً للبدء.</p><button class="btn btn-primary" id="empty-import">استيراد قائمة</button></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="view" id="view-movies">
+        <div class="panel placeholder-panel"><span>🎬</span><h2>قسم الأفلام</h2><p>هذه مساحة تجهيز لقسم VOD. سنربطه لاحقاً بمصدر أفلام تملك حق استخدامه، مع بيانات العنوان والصورة والتصنيف ورابط التشغيل.</p></div>
+      </section>
+      <section class="view" id="view-series">
+        <div class="panel placeholder-panel"><span>📚</span><h2>قسم المسلسلات</h2><p>سنضيف إدارة المواسم والحلقات بعد بناء خدمة الخلفية. حالياً هذا القسم تجريبي ولا يقدم بثاً.</p></div>
+      </section>
+      <section class="view" id="view-settings">
+        <div class="panel settings-panel">
+          <h3>إعدادات المشروع</h3>
+          <div class="setting-row"><div><b>اسم المشروع</b><small>الاسم الظاهر في لوحة التحكم</small></div><input id="project-name" value="MY IPTV SERVER"></div>
+          <div class="setting-row"><div><b>التخزين</b><small>البيانات تحفظ محلياً داخل المتصفح الحالي</small></div><span class="tag">Local Storage</span></div>
+          <div class="setting-row"><div><b>نسخة تجريبية</b><small>لا يوجد API أو تسجيل دخول حقيقي في هذه المرحلة</small></div><span class="tag warning">Frontend فقط</span></div>
+          <button class="btn btn-danger" id="clear-data">مسح بيانات القنوات المحلية</button>
+        </div>
+      </section>
+      <footer>MY IPTV SERVER <span>نسخة أولية · للاستخدام مع المحتوى الذي تملك حق توزيعه</span></footer>
+    </main>
+  </div>
+
+  <input type="file" id="m3u-file" accept=".m3u,.m3u8,.txt,audio/x-mpegurl,application/vnd.apple.mpegurl" hidden>
+  <div class="modal-backdrop" id="modal">
+    <form class="modal" id="channel-form">
+      <div class="modal-head"><div><h3 id="modal-title">إضافة قناة</h3><p>أدخل بيانات القناة</p></div><button type="button" class="close-btn" id="close-modal">×</button></div>
+      <label>اسم القناة<input id="channel-name" required placeholder="مثال: Demo TV"></label>
+      <label>التصنيف<input id="channel-category" placeholder="مثال: الجزائر"></label>
+      <label>رابط البث<input id="channel-url" type="url" required placeholder="https://example.com/live.m3u8"></label>
+      <label>رابط الشعار (اختياري)<input id="channel-logo" type="url" placeholder="https://example.com/logo.png"></label>
+      <div class="modal-actions"><button type="button" class="btn btn-outline" id="cancel-modal">إلغاء</button><button class="btn btn-primary" type="submit">حفظ القناة</button></div>
+    </form>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
